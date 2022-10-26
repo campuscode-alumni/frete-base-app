@@ -1,0 +1,20 @@
+<h1> Produtos </h1>
+
+<ul>
+  <li> <%= link_to 'Adicionar novo produto', new_product_url %> </li>
+</ul>
+
+
+<div>
+  <% @products.each do |p| %>
+    <dl>
+      <dt>Nome:</dt>
+      <dd><%= p.name %></dd>
+      <dt>Preço:</dt>
+      <dd><%= number_to_currency(p.price, unit: "R$", separator: ",", format: "%u %n") %></dd>
+      <dt>Categoria:</dt>
+      <dd><%= p.product_category.name %></dd>
+    </dl>
+  <% end %>
+
+</div>
