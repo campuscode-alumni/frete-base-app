@@ -1,9 +1,22 @@
-<h1>New product</h1>
+<% if @product.errors.any? %>
+  <div class="my-3 alert alert-danger">
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-<%= render "form", product: @product %>
+<%= form_with(model: @product) do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name %>
 
-<br>
+  <%= f.label :price, 'Preço' %>
+  <%= f.number_field :price, step: 0.01 %>
 
-<div>
-  <%= link_to "Back to products", products_path %>
-</div>
+  <%= f.label :product_category_id, 'Categoria' %>
+  <%= f.collection_select :product_category_id, @product_categories, :id, :name %>
+
+  <%= f.submit 'Criar' %>
+<% end %>
