@@ -1,50 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<h1>Fretes</h1>
 
-<h1>Products</h1>
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
-</div>
-<hr/>
-<h2>Nova Categoria de Produto</h2>
-<%= form_with(model: @product_category) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
-<hr/>
+<%= link_to 'Cadastrar Produto', new_product_path %>
 
-
-
-<h2>Novo Produto</h2>
-<%= form_with(model:  @product) do |form| %>
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :condition_new, 'Produto Novo' %>
-    <%= form.radio_button :condition, :new %>
-    
-    <%= form.label :condition_used, 'Produto Usado' %>
-    <%= form.radio_button :condition, :used %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-choose 'Produto Usado'
-
+<% @products.each do |product| %>
+  <dl class="card" style="width: 18rem;">
+    <h4><%= product.name %></h4>
+    <dt>Preço: </dt>
+    <dd><%= number_to_currency(product.price) %></dd>
+    <dt>Categoria: </dt>
+    <dd><%= product.product_category.name %></dd>
+  </dl>
+<% end%>
