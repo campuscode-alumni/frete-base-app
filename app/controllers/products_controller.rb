@@ -3,10 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
-    @product = Product.new
-    @product_category = ProductCategory.new
-    @product_categories = ProductCategory.all
+
   end
 
   # GET /products/1
@@ -15,7 +12,6 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
   end
 
   # GET /products/1/edit
@@ -24,28 +20,16 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
-    @product = Product.new(product_params)
-
-    if @product.save
-      redirect_to @product, notice: "Product was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
   end
 
   # PATCH/PUT /products/1
   def update
-    if @product.update(product_params)
-      redirect_to @product, notice: "Product was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
+
   end
 
   # DELETE /products/1
   def destroy
-    @product.destroy
-    redirect_to products_url, notice: "Product was successfully destroyed."
+
   end
 
   private
