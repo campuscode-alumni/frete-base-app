@@ -1,3 +1,14 @@
-<% form_with(model: @product) do |product| %>
+<%= form_with(model: @product) do |product| %>
+    
+    <%= product.label :name, 'Nome' %>
+    <%= product.text_field :name %>
+
+    <%= product.label :price, 'Preço' %>
+    <%= product.number_field :price %>
+
+    <%= product.label :product_category_id, 'Categoria do Produto' %>
+    <%= product.collection_select :product_category_id, @product_categories, :id, :name %>
+
+    <%= product.submit 'Enviar' %>
 
 <% end %>

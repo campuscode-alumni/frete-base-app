@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product_categories = ProductCategory.all
   end
 
 end
