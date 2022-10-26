@@ -1,0 +1,14 @@
+<article>
+  <header>
+    <%= link_to 'Cadastrar Novo Produto', new_product_path %>
+  </header>
+  <main>
+    <% if @products.any? %> 
+      <% @products.each do |product| %>
+        Nome: <%= product.name %>
+        Preço: <%= product.price %>
+        Categoria de Produto: <%= product.product_category.name %>
+      <% end %>
+    <% end %>
+  </main>
+</article>
