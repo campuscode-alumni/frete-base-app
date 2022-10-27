@@ -1,0 +1,14 @@
+<h1> Cadastrar novo produto </h1>
+
+<%= form_with model: @product do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price, 'Preço' %>
+  <%= f.number_field :price %>
+
+  <%= f.label :product_category_id, 'Categoria do Produto' %>
+  <%= f.collection_select :product_category_id, @product_categories, :id, :name %>
+
+  <%= f.submit 'Salvar' %>
+<% end %>
