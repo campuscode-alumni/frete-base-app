@@ -1,0 +1,10 @@
+<h1>Cadastro de Produto</h1>
+
+<%= form_with(model: @product) do |f| %>
+  <%= f.label :name, 'Produto'  %>
+  <%= f.text_field :name  %>
+  <%= f.label :price, 'Preço'  %>
+  <%= f.number_field :price  %>
+  <%= f.label :product_category_id, 'Categoria'  %>
+  <%= f.collection_select :product_category_id, @product_categories, :id, :name  %>
+  <% end %>

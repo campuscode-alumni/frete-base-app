@@ -1,0 +1,10 @@
+<h2>Product</h2>
+
+<%= link_to 'Cadastrar Produto', new_product_path %>
+
+<% @products.each do |p| %>
+
+    <%= p.name %>
+    R$<%= p.price %>
+<% end %>
+    
