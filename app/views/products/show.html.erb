@@ -1,12 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @product %>
-
-<%= render @product.product_category %>
-
-<div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
-
-  <%= button_to "Destroy this product", @product, method: :delete %>
-</div>
+<h1>Produto - <%= @product.name %> </h1>
+<p>Preço: <%= @product.show_formated_price %></p>
+<p>Categoria: <%= @product.product_category.name%></p>
