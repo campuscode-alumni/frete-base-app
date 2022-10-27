@@ -1,0 +1,7 @@
+<h2> Categorias de Produtos </h2>
+
+<% @product_categories.each do |pc|%>
+  <%= link_to pc.name, product_category_path(pc.id) %>
+<% end %>
+
+<%= link_to 'Cadastrar Categoria de Produto', new_product_category_path, class: 'btn btn-primary btn'%>

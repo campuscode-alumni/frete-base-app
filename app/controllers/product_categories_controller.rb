@@ -1,21 +1,28 @@
 class ProductCategoriesController < ApplicationController
-  def create
-    ProductCategory.create!(name: params.require(:product_category).permit(:name))
-    redirect_to products_path, notice: 'Categoria cadastrada'
+  
+  def index
+    @product_categories = ProductCategory.all
   end
 
-  def search 
-    nome_a_buscar = params[:busca]
-    ProductCategory.where("name LIKE :param_busca OR outro_campo LIKE :param_busca OR mais_um_campo LIKE :param_busca ", 
-    { param_busca: "%#{nome_a_buscar}%" }  )
+  def new
+    @product_category = ProductCategory.new
+  end
 
-    @transports = find_available_transports
-
+  def create
+    @product_category = ProductCategory.new(product_category_params)
+    if @product_category.save
+      redirect_to root_path, notice: 'Cadastrado com sucesso'
+    else
+      render 'new', notice: 'Não foi possível cadastrar produto'
+    end
+  end
+  
+  def show
+    @product_category = ProductCategory.find(params[:id])
   end
 
   private 
-
-  def find_available_transports()
-    FreightageFinder.new(transports, order).find()
+  def product_category_params
+    params.require(:product_category).permit(:name)
   end
 end

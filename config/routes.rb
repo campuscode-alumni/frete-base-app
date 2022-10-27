@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :products
-  resources :product_categories, only: [:create, :show] do
-    resources :products, only: [:create]
+
+  resources :product_categories, only: [:index, :show, :new, :create] do
+    resources :products, only: [:new, :create, :show]
   end
+  
   devise_for :users
-  root 'welcome#index'
+  root 'home#index'
 end
