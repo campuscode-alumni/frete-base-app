@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     resources :products, only: [:create]
   end
   devise_for :users
-  root 'welcome#index'
+  root 'home#index'
 end
