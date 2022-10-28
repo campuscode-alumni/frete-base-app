@@ -48,9 +48,10 @@ describe 'Usuário vê produtos a partir da API' do
                     )
     
       allow(Product).to receive(:all).and_raise(ActiveRecord::QueryCanceled)
-      
+
       get '/api/v1/products/'
   
+      
       expect(response).to have_http_status 500
     end
   end
