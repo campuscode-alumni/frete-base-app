@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @product_categories = ProductCategory.all
+    # @product_categories = ProductCategory.all if ProductCategory.any? 
+    # p @product_categories
   end
 
   # GET /products/1/edit

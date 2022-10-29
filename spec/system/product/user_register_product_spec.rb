@@ -35,10 +35,8 @@ describe 'Usuário cadastra produto' do
   
     expect(page).to have_content("Nome não pode ficar em branco")
     expect(page).to have_content("Preço não pode ficar em branco")
+    expect(page).to have_content("Modelo de produto não pode ficar em branco")
+    expect(page).to have_content("Modelo de produto é obrigatório")
     expect(page).to have_link("Voltar")
-    expect(page).not_to have_content("Eletrodométicos")
-    expect(page).not_to have_content("Preço")
-    expect(page).not_to have_content("Nome")
-    expect(current_path).to eq new_product_path
   end
 end

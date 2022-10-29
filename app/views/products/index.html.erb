@@ -1,11 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>Produtos</h1>
 <div id="products">
   <% @products.each do |product| %>
-    <%= render product %>
     <p>
-      <%= link_to "Show this product", product %>
+      <%= link_to "Ver produto", product %>
     </p>
   <% end %>
 </div>
