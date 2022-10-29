@@ -16,7 +16,7 @@ describe 'Usuário cadastra produto' do
 
     expect(page).to have_content("Produto cadastrado com sucesso")
     expect(page).to have_content("Nome: XBox")
-    expect(page).to have_content("Preço: R$1000,00")
+    expect(page).to have_content("Preço: R$ 1.000,00")
     expect(page).to have_content("Modelo de produto: Eletrônicos")
     expect(page).to have_link("Voltar")
   end 

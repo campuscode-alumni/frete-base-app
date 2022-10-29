@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      product: 'Produto'
+      product_category: 'Modelo de produto'
+    attributes:
+      product:  
+        name: 'Nome'
+        price: 'Preço'
+        product_category: 'Modelo de produto'
+        product_category_id: 'Modelo de produto'

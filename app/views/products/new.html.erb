@@ -1,9 +1,29 @@
-<h1>New product</h1>
 
-<%= render "form", product: @product %>
+<h2>Novo Produto</h2>
+<%= form_with(model: @product) do |form| %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :product_category_id, style: "display: block" %>
+    <%= form.collection_select :product_category_id, @product_categories, :id, :name %>
+  </div>
+
+  
+  <div>
+    <%= form.submit 'Salvar' %>
+  </div>
+<% end %>
 
 <br>
 
 <div>
-  <%= link_to "Back to products", products_path %>
+  <%= link_to "Voltar", products_path %>
 </div>

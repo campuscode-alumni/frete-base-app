@@ -1,8 +1,9 @@
 class ProductCategoriesController < ApplicationController
   def create
-    ProductCategory.create!(name: params.require(:product_category).permit(:name))
+    ProductCategory.create!(params.require(:product_category).permit(:name))
     redirect_to products_path, notice: 'Categoria cadastrada'
   end
+
 
   def search 
     nome_a_buscar = params[:busca]

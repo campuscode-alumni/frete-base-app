@@ -1,12 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @product %>
+<h1><%= @product.name %></h1>
 
-<%= render @product.product_category %>
+<dl>
+  <dt><%= Product.human_attribute_name(:name) %>:</dt>
+  <dd><%= @product.name %></dd>
+  <dt><%= Product.human_attribute_name(:price) %>:<dt>
+  <dd><%= number_to_currency(@product.price, :unit => "R$ ", :separator => ",", :delimiter => ".") %></dd>
+  <dt><%= Product.human_attribute_name(:product_category) %>:<dt>
+  <dd><%= @product.product_category.name %></dd>
+<dl>
 
 <div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
-
-  <%= button_to "Destroy this product", @product, method: :delete %>
+  <%= link_to "Editar produto", edit_product_path(@product) %> |
+  <%= link_to "Voltar", products_path %>
 </div>
