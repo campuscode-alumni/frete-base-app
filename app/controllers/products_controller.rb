@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :product_params, only:[:create, :update]
+  before_action :authenticate_user!
 
   # GET /products
   def index
@@ -14,8 +15,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    # @product_categories = ProductCategory.all if ProductCategory.any? 
-    # p @product_categories
   end
 
   # GET /products/1/edit

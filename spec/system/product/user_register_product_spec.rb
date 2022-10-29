@@ -55,6 +55,23 @@ describe 'Usuário cadastra produto' do
     expect(page).to have_content("Sistema de Frete e Transportadoras")
     expect(page).to have_link("Início")
     expect(page).to have_link("Produtos")
+    expect(page).to have_link("Sair")
     expect(current_path).to eq root_path
+  end
+
+  it 'e não está autenticado' do  
+    user = User.create!(email:'joao@campuscode.com', password:'12345678')
+    ProductCategory.create!(name:'Artigos para o lar')
+
+    visit root_path
+    click_on 'Produtos'
+    
+    expect(page).not_to have_link("Voltar")
+    expect(page).not_to have_content("Sistema de Frete e Transportadoras")
+    expect(page).not_to have_link("Sair")
+    expect(page).to have_text("Realize login para continuar ou crie uma nova conta")
+    expect(page).to have_field("E-mail")
+    expect(page).to have_field("Senha")
+    expect(page).to have_button("Log in")
   end
 end

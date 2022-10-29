@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root 'welcome#index'
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy' 
+    get "/home", :to => "devise/sessions#new", :as => :home     
+  end 
 end
