@@ -1,12 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :product_params, only:[:create, :update]
+  before_action :authenticate_user!
 
   # GET /products
   def index
     @products = Product.all
-    @product = Product.new
-    @product_category = ProductCategory.new
-    @product_categories = ProductCategory.all
   end
 
   # GET /products/1
@@ -25,11 +24,11 @@ class ProductsController < ApplicationController
   # POST /products
   def create
     @product = Product.new(product_params)
-
+   
     if @product.save
-      redirect_to @product, notice: "Product was successfully created."
+      redirect_to @product, notice: "Produto cadastrado com sucesso"
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -50,12 +49,14 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.require(:product).permit(:name, :price, :product_category_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def product_params
+    params.require(:product).permit(:name, :price, :product_category_id)
+  end
+
 end
+

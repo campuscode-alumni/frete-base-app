@@ -1,11 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>Produtos</h1>
 <div id="products">
   <% @products.each do |product| %>
-    <%= render product %>
     <p>
-      <%= link_to "Show this product", product %>
+      <%= link_to "Ver produto", product %>
     </p>
   <% end %>
 </div>
@@ -18,33 +17,7 @@
 <% end %>
 <hr/>
 
+<%= link_to 'Cadastrar produto', new_product_path %>
+<%= link_to 'Voltar', root_path %>
 
-
-<h2>Novo Produto</h2>
-<%= form_with(model:  @product) do |form| %>
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :condition_new, 'Produto Novo' %>
-    <%= form.radio_button :condition, :new %>
-    
-    <%= form.label :condition_used, 'Produto Usado' %>
-    <%= form.radio_button :condition, :used %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-choose 'Produto Usado'
 

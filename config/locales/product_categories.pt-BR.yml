@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      product_categories: 'Produto'
+    attributes:
+      product_categories:
+        name: 'Nome'
+      
